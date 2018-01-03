@@ -68,7 +68,14 @@ const ImageCropFocusType = new GraphQLEnumType({
 
 const isImage = image =>
   _.includes(
-    [`image/jpeg`, `image/jpg`, `image/png`, `image/webp`, `image/gif`],
+    [
+      `image/jpeg`,
+      `image/jpg`,
+      `image/png`,
+      `image/webp`,
+      `image/gif`,
+      `image/svg`, // Experiment added by thisjeremiah
+    ],
     _.get(image, `file.contentType`)
   )
 
