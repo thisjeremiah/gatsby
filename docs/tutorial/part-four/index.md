@@ -56,11 +56,11 @@ directly into our components**—in the shape and form we want.
 
 ## How Gatsby's data layer uses GraphQL to pull data into components
 
-If you're familiar with the React world, there are many options for loading data
-into components. One of the most popular and robust of these is a technology
-called [GraphQL](http://graphql.org/).
+There are many options for loading data into React components. One of the most
+popular and powerful of these is a technology called
+[GraphQL](http://graphql.org/).
 
-GraphQL was invented at Facebook to help product engineers pull needed data into
+GraphQL was invented at Facebook to help product engineers _pull_ needed data into
 components.
 
 GraphQL is a **q**uery **l**anguage (the _QL_ part of its name). If you're
@@ -68,12 +68,12 @@ familiar with SQL, it works in a very similar way. Using a special syntax, you d
 the data you want in your component and then that data is given
 to you.
 
-In Gatsby, GraphQL enables components to declare and receive the data they need.
+Gatsby uses GraphQL to enable components to declare the data they need.
 
 ## Our first GraphQL query
 
 Let's create another new site for this part of the tutorial like in the previous
-parts. We're going to build a simple Markdown blog called "Pandas Eating Lots".
+parts. We're going to build a Markdown blog called "Pandas Eating Lots".
 It's dedicated to showing off the best pictures & videos of Pandas eating lots
 of food. Along the way we'll be dipping our toes into GraphQL and Gatsby's
 Markdown support.
@@ -197,7 +197,7 @@ the following:
 
 ![start](start.png)
 
-We have another simple site with a layout and two pages.
+We have another small site with a layout and two pages.
 
 Now let's start querying 😋
 
@@ -211,10 +211,7 @@ error-prone, especially as sites get larger and more complex. It's much better t
 store the title in one place and then _pull_ that title into components whenever
 we need it.
 
-To solve this, Gatsby supports a simple pattern for adding site "metadata"—like
-the title.
-
-We add this data to the `gatsby-config.js` file. Let's add our site title to
+To solve this, we can add site "metadata" — like page title or description — to the `gatsby-config.js` file. Let's add our site title to
 `gatsby-config.js` file and then query it from our layout and about page!
 
 Edit your `gatsby-config.js`:
@@ -233,7 +230,7 @@ module.exports = {
       },
     },
   ],
-}
+};
 ```
 
 Restart the development server.
@@ -408,7 +405,7 @@ module.exports = {
       },
     },
   ],
-}
+};
 ```
 
 Save that and restart the gatsby development server. Then open up Graph_i_QL
@@ -610,7 +607,7 @@ module.exports = {
       },
     },
   ],
-}
+};
 ```
 
 Restart the development server then refresh (or open again) Graph_i_QL and look
@@ -706,7 +703,7 @@ seem to really enjoy bananas!
 
 ![two-posts](two-posts.png)
 
-Which looks great! Except…the order of the posts is wrong.
+Which looks great! Except… the order of the posts is wrong.
 
 But this is easy to fix. When querying a connection of some type, you can pass a
 variety of arguments to the query. You can `sort` and `filter` nodes, set how
@@ -736,8 +733,10 @@ you use GraphQL to query your _data_ and _map_ the data to _pages_—all at buil
 time. This is a really powerful idea. We'll be exploring its implications and
 ways to use it for the remainder of the tutorial.
 
-Creating new pages has two steps, 1) generate the "path" or "slug" for the page
-and 2) create the page.
+Creating new pages has two steps:
+
+1. Generate the "path" or "slug" for the page.
+2. Create the page.
 
 To create our Markdown pages, we'll learn to use two Gatsby APIs
 [`onCreateNode`](/docs/node-apis/#onCreateNode) and
@@ -770,7 +769,7 @@ exports.onCreateNode = ({ node }) => {
   if (node.internal.type === `MarkdownRemark`) {
     console.log(node.internal.type)
   }
-}
+};
 ```
 
 We want to use each Markdown file name to create the page slug. So
@@ -785,7 +784,7 @@ exports.onCreateNode = ({ node, getNode }) => {
     const fileNode = getNode(node.parent)
     console.log(`\n`, fileNode.relativePath)
   }
-}
+};
 ```
 
 There in your terminal you should see the relative paths for our two Markdown
@@ -798,13 +797,13 @@ tricky, the `gatsby-source-filesystem` plugin ships with a function for creating
 slugs. Let's use that.
 
 ```javascript{1,5}
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, getNode }) => {
   if (node.internal.type === `MarkdownRemark`) {
     console.log(createFilePath({ node, getNode, basePath: `pages` }))
   }
-}
+};
 ```
 
 The function handles finding the parent `File` node along with creating the
@@ -823,7 +822,7 @@ the original creator of a node can directly modify the node—all other plugins
 fields.
 
 ```javascript{3,4,6-11}
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
   const { createNodeField } = boundActionCreators
@@ -835,7 +834,7 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
       value: slug,
     })
   }
-}
+};
 ```
 
 Restart the development server and open or refresh Graph_i_QL. Then run this
@@ -861,7 +860,7 @@ In the same `gatsby-node.js` file, add the following. Here we tell Gatsby about
 our pages—what are their paths, what template component do they use, etc.
 
 ```javascript{15-34}
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
   const { createNodeField } = boundActionCreators
@@ -873,7 +872,7 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
       value: slug,
     })
   }
-}
+};
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
   return new Promise((resolve, reject) => {
@@ -894,7 +893,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       resolve()
     })
   })
-}
+};
 ```
 
 We've added an implementation of the
@@ -923,8 +922,8 @@ export default () => {
 Then update `gatsby-node.js`
 
 ```javascript{1,17,32-41}
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const path = require(`path`);
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
   const { createNodeField } = boundActionCreators
@@ -936,7 +935,7 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
       value: slug,
     })
   }
-}
+};
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
@@ -967,7 +966,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       resolve()
     })
   })
-}
+};
 ```
 
 Restart the development server and our pages will be created! An easy way to
@@ -1021,11 +1020,11 @@ Return to `src/pages/index.js` and let's query for our Markdown slugs and create
 links.
 
 ```jsx{3,18-19,29,46-48}
-import React from "react"
-import g from "glamorous"
-import Link from "gatsby-link"
+import React from "react";
+import g from "glamorous";
+import Link from "gatsby-link";
 
-import { rhythm } from "../utils/typography"
+import { rhythm } from "../utils/typography";
 
 export default ({ data }) => {
   return (
@@ -1078,7 +1077,7 @@ export const query = graphql`
 `
 ```
 
-And there we go! A working (albeit quite simple still) blog!
+And there we go! A working, albeit small, blog!
 
 Try playing more with the site. Try adding some more Markdown files. Explore
 querying other data from the `MarkdownRemark` nodes and adding them to the

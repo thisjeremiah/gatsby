@@ -21,6 +21,49 @@ describe(`Add pages`, () => {
     expect(state).toMatchSnapshot()
   })
 
+  it(`Fails if path is missing`, () => {
+    const action = actions.createPage(
+      {
+        component: `/whatever/index.js`,
+      },
+      { id: `test`, name: `test` }
+    )
+    expect(action).toMatchSnapshot()
+  })
+
+  it(`Fails if component path is missing`, () => {
+    const action = actions.createPage(
+      {
+        path: `/whatever/`,
+      },
+      { id: `test`, name: `test` }
+    )
+    expect(action).toMatchSnapshot()
+  })
+
+  it(`Fails if the component path isn't absolute`, () => {
+    const action = actions.createPage(
+      {
+        path: `/whatever/`,
+        component: `cheese.js`,
+      },
+      { id: `test`, name: `test` }
+    )
+    expect(action).toMatchSnapshot()
+  })
+
+  it(`adds an initial forward slash if the user doesn't`, () => {
+    const action = actions.createPage(
+      {
+        path: `hi/`,
+        component: `/whatever/index.js`,
+      },
+      { id: `test`, name: `test` }
+    )
+    const state = reducer(undefined, action)
+    expect(state[0].path).toEqual(`/hi/`)
+  })
+
   it(`allows you to add pages with context`, () => {
     const action = actions.createPage(
       {

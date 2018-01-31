@@ -77,15 +77,30 @@ Community:
 
   * Bootstrap CSS framework
   * Single column layout
-  * Simple components: SiteNavi, SitePost, SitePage
+  * Basic components: SiteNavi, SitePost, SitePage
 
 * [gatsby-blog-starter-kit](https://github.com/dschau/gatsby-blog-starter-kit)
+  [(demo)](https://dschau.github.io/gatsby-blog-starter-kit/)
 
   Features:
 
   * Blog post listing with previews for each blog post
   * Navigation between posts with a previous/next post button
   * Tags and tag navigation
+
+* [gatsby-starter-casper](https://github.com/haysclark/gatsby-starter-casper)
+  [(demo)](https://haysclark.github.io/gatsby-starter-casper/)
+
+  Features:
+
+  * Page pagination
+  * CSS
+  * Tags
+  * Google Analytics
+  * Offline support
+  * Web App Manifest
+  * SEO
+  * [Full list here!](https://github.com/haysclark/gatsby-starter-casper#features)
 
 * [gatsby-advanced-starter](https://github.com/Vagr9K/gatsby-advanced-starter)
   [(demo)](https://vagr9k.github.io/gatsby-advanced-starter/)
@@ -196,16 +211,32 @@ Community:
 * [gatsby-starter-portfolio-emma](https://github.com/LeKoArts/gatsby-starter-portfolio-emma)
   [(demo)](https://embalmer-glues-43220.netlify.com/)
 
+  The target audience are designers and photographers.
+
   Features:
 
-  * Perfect for designers and photographers
-  * Full-width Photo Grid-Layout (Responsive Images through
-    [gatsby-image](https://using-gatsby-image.gatsbyjs.org/))
+  * Full-width photo grid-layout (with [gatsby-image](https://using-gatsby-image.gatsbyjs.org/))
   * Minimalistic light theme with large images
   * Create your projects in Markdown
   * Styling with SCSS and
     [Typography.js](https://kyleamathews.github.io/typography.js/)
   * Easily configurable
+  * And other good stuff (SEO, Offline Support, WebApp Manifest Support)
+
+* [gatsby-starter-portfolio-emilia](https://github.com/LeKoArts/gatsby-starter-portfolio-emilia)
+  [(demo)](https://upbeat-edison-0598aa.netlify.com/)
+
+  The target audience are designers and photographers.
+
+  Features:
+
+  * Focus on big images (with [gatsby-image](https://using-gatsby-image.gatsbyjs.org/))
+  * Dark Theme with HeroPatterns Header
+  * CSS Grid and Styled Components
+  * One-Page layout with sub-pages for projects
+  * Easily configurable
+  * React Overdrive transitions
+  * Create your projects in Markdown
   * And other good stuff (SEO, Offline Support, WebApp Manifest Support)
 
 * [gatsby-starter-bootstrap-netlify](https://github.com/konsumer/gatsby-starter-bootstrap-netlify)
@@ -298,3 +329,81 @@ Community:
   * Password Change
   * Protected Routes with Authorization
   * Realtime Database with Users
+
+* [gatsby-starter-ceevee](https://github.com/amandeepmittal/gatsby-starter-ceevee) [(demo)](http://gatsby-starter-ceevee.surge.sh/)
+
+  Features:
+
+  * Based on the Ceevee site template, design by [Styleshout](https://www.styeshout.com/)
+  * Single Page Resume/Portfolio site
+  * Target audience Developers, Designers, etc.
+  * Used CSS Modules, easy to manipulate
+  * FontAwsome Library for icons
+  * Responsive Design, optimized for Mobile devices
+
+- [gatsby-starter-product-guy](https://github.com/amandeepmittal/gatsby-starter-product-guy) [(demo)](http://gatsby-starter-product-guy.surge.sh/)
+
+  Features:
+
+  * Single Page
+  * A portfolio Developers and Product launchers alike
+  * Using [Typography.js](kyleamathews.github.io/typography.js/) easy to switch fonts
+  * All your Project/Portfolio Data in Markdown, server by GraphQL
+  * Responsive Design, optimized for Mobile devices
+
+* [gatsby-starter-strata](https://github.com/ChangoMan/gatsby-starter-strata)
+  [(demo)](http://gatsby-strata.surge.sh/)
+
+  Features:
+
+  * Based off of the Strata site template. Designed by
+    [HTML5 UP](https://html5up.net/strata)
+  * Super Simple, single page portfolio site
+  * Lightbox style React photo gallery
+  * Fully Responsive
+  * Styling with SCSS
+
+* [verious](https://github.com/cpinnix/verious-boilerplate)
+  [(demo)](https://www.verious.io/)
+
+  Features:
+
+  * Components only. Bring your own data, plugins, etc.
+  * Bootstrap inspired grid system with Container, Row, Column components.
+  * Simple Navigation and Dropdown components.
+  * Baseline grid built in with modular scale across viewports.
+  * Abstract measurements utilize REM for spacing.
+  * One font to rule them all: Helvetica.
+
+* [gatsby-starter-lumen](https://github.com/alxshelepenok/gatsby-starter-lumen)
+  [(demo)](https://lumen.netlify.com/)
+
+  Features:
+
+  * Lost Grid.
+  * Beautiful typography inspired by [matejlatin/Gutenberg](https://github.com/matejlatin/Gutenberg).
+  * [Mobile-First](https://medium.com/@mrmrs_/mobile-first-css-48bc4cc3f60f) approach in development.
+  * Stylesheet built using SASS and [BEM](http://getbem.com/naming/)-Style naming.
+  * Syntax highlighting in code blocks.
+  * Sidebar menu built using a configuration block.
+  * Archive organized by tags and categories.
+  * Automatic RSS generation.
+  * Automatic Sitemap generation.
+  * Offline support.
+  * Google Analytics support.
+  * Disqus Comments support.
+
+* [gatsby-starter-strict](https://github.com/kripod/gatsby-starter-strict)
+  [(demo)](https://gatsby-starter-strict.netlify.com)
+
+  Features:
+
+  * A set of strict linting rules (based on the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript))
+    * `lint` script
+  * Encourage automatic code formatting
+    * `format` script
+  * Prefer using [Yarn](https://yarnpkg.com) for package management
+  * Use [EditorConfig](http://editorconfig.org) to maintain consistent coding styles between different editors and IDEs
+  * Integration with [Visual Studio Code](https://code.visualstudio.com)
+    * Pre-configured auto-formatting on file save
+  * Based on [gatsby-starter-default](https://github.com/gatsbyjs/gatsby-starter-default)

@@ -85,6 +85,8 @@ const pascalCase = _.flow(_.camelCase, _.upperFirst)
  * @param {Object} page a page object
  * @param {string} page.path Any valid URL. Must start with a forward slash
  * @param {string} page.component The absolute path to the component for this page
+ * @param {string} page.layout The name of the layout for this page. By default
+ * `'index'` layout is used
  * @param {Object} page.context Context data for this page. Passed as props
  * to the component `this.props.pathContext` as well as to the graphql query
  * as graphql arguments.
@@ -102,6 +104,45 @@ const pascalCase = _.flow(_.camelCase, _.upperFirst)
  * })
  */
 actions.createPage = (page: PageInput, plugin?: Plugin, traceId?: string) => {
+  let noPageOrComponent = false
+  let name = `The plugin "${plugin.name}"`
+  if (plugin.name === `default-site-plugin`) {
+    name = `Your site's "gatsby-node.js"`
+  }
+  if (!page.path) {
+    const message = `${name} must set the page path when creating a page`
+    // Don't log out when testing
+    if (!process.env.NODE_ENV === `test`) {
+      console.log(chalk.bold.red(message))
+      console.log(``)
+      console.log(page)
+    } else {
+      return message
+    }
+    noPageOrComponent = true
+  }
+
+  if (!page.component || !path.isAbsolute(page.component)) {
+    const message = `${name} must set the absolute path to the page component when create creating a page`
+    // Don't log out when testing
+    if (!process.env.NODE_ENV === `test`) {
+      console.log(chalk.bold.red(message))
+      console.log(``)
+      console.log(page)
+    } else {
+      return message
+    }
+    noPageOrComponent = true
+  }
+
+  if (noPageOrComponent) {
+    console.log(``)
+    console.log(
+      `See the documentation for createPage https://www.gatsbyjs.org/docs/bound-action-creators/#createPage`
+    )
+    process.exit(1)
+  }
+
   let jsonName = `${_.kebabCase(page.path)}.json`
   let internalComponentName = `Component${pascalCase(page.path)}`
 
@@ -133,17 +174,17 @@ actions.createPage = (page: PageInput, plugin?: Plugin, traceId?: string) => {
     updatedAt: Date.now(),
   }
 
+  // If the path doesn't have an initial forward slash, add it.
+  if (internalPage.path[0] !== `/`) {
+    internalPage.path = `/${internalPage.path}`
+  }
+
   const result = Joi.validate(internalPage, joiSchemas.pageSchema)
   if (result.error) {
     console.log(chalk.blue.bgYellow(`The upserted page didn't pass validation`))
     console.log(chalk.bold.red(result.error))
     console.log(internalPage)
     return null
-  }
-
-  // If the path doesn't have an initial forward slash, add it.
-  if (internalPage.path[0] !== `/`) {
-    internalPage.path = `/${internalPage.path}`
   }
 
   return {
@@ -544,7 +585,11 @@ actions.createNodeField = (
 }
 
 /**
- * Creates a link between a parent and child node
+ * Creates a link between a parent and child node. This is used when you
+ * transform content from a node creating a new child node. You need to add
+ * this new child node to the `children` array of the parent but since you
+ * don't have direct access to the immutable parent node, use this action
+ * instead.
  * @param {Object} $0
  * @param {Object} $0.parent the parent node object
  * @param {Object} $0.child the child node object
@@ -704,9 +749,10 @@ actions.setPluginStatus = (
 }
 
 /**
- * Create a redirect from one page to another.  Redirect data can be used to
- * configure hosting environments like Netlify (automatically handled with the
- * [Netlify plugin](/packages/gatsby-plugin-netlify/)).
+ * Create a redirect from one page to another. Server redirects don't work out
+ * of the box. You must have a plugin setup to integrate the redirect data with
+ * your hosting technology e.g. the [Netlify
+ * plugin](/packages/gatsby-plugin-netlify/)).
  *
  * @param {Object} redirect Redirect data
  * @param {string} redirect.fromPath Any valid URL. Must start with a forward slash

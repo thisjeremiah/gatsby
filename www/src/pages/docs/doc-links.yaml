@@ -2,7 +2,7 @@
   items:
     - title: Getting Started
       link: /docs/
-    - title: Using Starters
+    - title: Starters
       link: /docs/gatsby-starters/
     - title: Deploying
       link: /docs/deploy-gatsby/
@@ -18,16 +18,18 @@
       link: /docs/plugins/
     - title: PRPL Pattern
       link: /docs/prpl-pattern/
-    - title: Querying with GraphQL*
+    - title: Querying data with GraphQL
       link: /docs/querying-with-graphql/
 - title: Guides
   items:
-    - title: Add 404 Page
+    - title: Adding a 404 Page
       link: /docs/add-404-page/
     - title: Adding Images, Fonts, and Files
       link: /docs/adding-images-fonts-files/
     - title: Browser Support
       link: /docs/browser-support/
+    - title: Building apps with Gatsby
+      link: /docs/building-apps-with-gatsby/
     - title: Caching
       link: /docs/caching/
     - title: Creating and Modifying Pages
@@ -44,6 +46,8 @@
       link: /docs/environment-variables/
     - title: Gatsby on Windows
       link: /docs/gatsby-on-windows/
+    - title: Managing Content with Netlify CMS
+      link: /docs/netlify-cms/
     - title: How Gatsby Works with GitHub Pages
       link: /docs/how-gatsby-works-with-github-pages/
     - title: Migrating from v0 to v1
@@ -52,11 +56,15 @@
       link: /docs/path-prefix/
     - title: Proxying API Requests
       link: /docs/api-proxy/
+    - title: Using CSS-in-JS library Glamor
+      link: /docs/glamor/
+    - title: Using CSS-in-JS library Styled Components
+      link: /docs/styled-components/
     - title: Adding Markdown Pages
       link: /docs/adding-markdown-pages/
-    - title: Adding a List of Markdown Blog Posts*
+    - title: Adding a List of Markdown Blog Posts
       link: /docs/adding-a-list-of-markdown-blog-posts/
-    - title: Adding Tags and Categories to Blog Posts*
+    - title: Adding Tags and Categories to Blog Posts
       link: /docs/adding-tags-and-categories-to-blog-posts/
     - title: Creating Dynamically-Rendered Navigation*
       link: /docs/creating-dynamically-rendered-navigation/
@@ -76,6 +84,10 @@
       link: /docs/node-apis/
     - title: Gatsby SSR APIs
       link: /docs/ssr-apis/
+    - title: Gatsby Config
+      link: /docs/gatsby-config/
+    - title: GraphQL Reference
+      link: /docs/graphql-reference/
 - title: Contributing
   items:
     - title: How to Contribute

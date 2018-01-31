@@ -15,16 +15,14 @@ Sit down, buckle up, and let's get going!
 ## Check your development environment
 
 Let's check first that you have everything set up to start creating with Gatsby.
-You will need a recent version of [Node.js](https://nodejs.org) installed.
+You will need a recent version of Node.js installed.
 
 Node.js is a programming tool for running JavaScript on servers and in your
 computer's terminal. Gatsby is built using Node.js.
 
 Open a terminal window. See
-[these instructions](http://www.macworld.co.uk/feature/mac-software/how-use-terminal-on-mac-3608274/)
-for Mac users and
-[these other instructions](https://www.quora.com/How-do-I-open-terminal-in-windows)
-for Windows users. In your terminal window, type `node --version` then `npm --version`.
+[terminal instructions for Mac users](http://www.macworld.co.uk/feature/mac-software/how-use-terminal-on-mac-3608274/) and
+[terminal instructions for Windows users](https://www.quora.com/How-do-I-open-terminal-in-windows). In your terminal window, type `node --version` and hit ENTER, then `npm --version` and hit ENTER.
 
 You should see something like:
 
@@ -43,7 +41,7 @@ There are several official starters and many others contributed from the Gatsby
 community! [See the Starters page for the full list](/docs/gatsby-starters/).
 
 To install a starter, first install Gatsby's terminal program by typing the
-following command into the a terminal window and hit ENTER.
+following command into the terminal window and hit ENTER.
 
 ```sh
 npm install --global gatsby-cli
@@ -93,8 +91,7 @@ open the folder on your computer called "tutorial-part-one," which was
 automatically created when you ran the `gatsby new` terminal command above.
 
 Once you've opened the "tutorial-part-one" folder in your code editing
-software, it's time to edit your website. In the code editing software, you'll
-need to find `src/pages/index.js`. Once you find that, try changing "Hello
+software, it's time to edit your website. You'll see groups of directories and files; find the file in this location: `src/pages/index.js`. Once you find that, try changing "Hello
 world!" in the page component to "Hello Gatsby!". Once you save that change, the text in your browser
 should change within a second.
 
@@ -134,7 +131,7 @@ export default () =>
  <div style={{ color: `tomato` }}>
    <h1>Hello Gatsby!</h1>
    <p>What a world.</p>
-   <img src="http://lorempixel.com/400/200/" alt="" />
+   <img src="https://source.unsplash.com/random/400x200" alt="" />
  </div>
 ```
 
@@ -166,7 +163,7 @@ export default () =>
   <div style={{ color: `tomato` }}>
     <h1>Hello Gatsby!</h1>
     <p>What a world.</p>
-    <img src="http://lorempixel.com/400/200/" alt="" />
+    <img src="https://source.unsplash.com/random/400x200" alt="" />
     <br />
     <div>
       <Link to="/page-2/">Link</Link>
@@ -205,8 +202,7 @@ pages!
 
 ## Interactive page
 
-One nice thing about using Gatsby for building websites vs other tools is it's
-so easy to add interactivity to your pages. React.js was designed for
+One nice thing about using Gatsby for building websites vs. other tools is itʼs easier to add interactivity to your pages. React.js was designed for
 Facebook.com and is used on many other world-class web applications.
 
 Let's see how easy it is to add interactive elements to our pages.
@@ -222,7 +218,7 @@ export default () =>
   <div style={{ color: `tomato` }}>
     <h1>Hello Gatsby!</h1>
     <p>What a world.</p>
-    <img src="http://lorempixel.com/400/200/" alt="" />
+    <img src="https://source.unsplash.com/random/400x200" alt="" />
     <br />
     <div>
       <Link to="/page-2/">Link</Link>
@@ -342,8 +338,8 @@ changes the count.
 
 ## Deploying Gatsby.js websites on the web
 
-Gatsby.js is a _static site generator_ which makes deploying Gatsby sites to the
-web really easy. There are no servers to setup or complicated databases to
+Gatsby.js is a _static site generator_, which makes deploying Gatsby sites to the
+web much easier vs. traditional CMSs. There are no servers to setup or complicated databases to
 deploy. Instead, the Gatsby `build` command produces a directory of static HTML
 and JavaScript files which you can deploy to a static site hosting service.
 
